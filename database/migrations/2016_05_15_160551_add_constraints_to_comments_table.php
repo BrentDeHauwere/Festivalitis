@@ -15,7 +15,8 @@ class AddConstraintsToCommentsTable extends Migration
         Schema::table('comments', function (Blueprint $table) {
             $table->foreign('news_id')
                 ->references('id')
-                ->on('news');
+                ->on('news')
+                ->onDelete('cascade');
             $table->foreign('user_id')
                 ->references('id')
                 ->on('users');
