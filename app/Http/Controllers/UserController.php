@@ -8,5 +8,13 @@ use App\Http\Requests;
 
 class UserController extends Controller
 {
-    //
+	/**
+	 * Store a newly created user in storage.
+	 *
+	 * @return Response
+	 */
+	public function store()
+	{
+
+	}
 }

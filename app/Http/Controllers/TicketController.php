@@ -8,5 +8,13 @@ use App\Http\Requests;
 
 class TicketController extends Controller
 {
-    //
+	/**
+	 * Store a newly created ticket in storage.
+	 *
+	 * @return Response
+	 */
+	public function store()
+	{
+
+	}
 }

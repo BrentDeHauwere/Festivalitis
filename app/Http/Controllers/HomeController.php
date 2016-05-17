@@ -8,5 +8,13 @@ use App\Http\Requests;
 
 class HomeController extends Controller
 {
-    //
+	/**
+	 * Show the website (one page).
+	 *
+	 * @return Response
+	 */
+    public function index()
+	{
+
+	}
 }
