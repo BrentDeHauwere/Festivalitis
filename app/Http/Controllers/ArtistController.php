@@ -16,7 +16,12 @@ class ArtistController extends Controller
 	 */
     public function store(ArtistRequest $request)
 	{
-
+		$artist = new Artist();
+		$artist->name = $request->name;
+		$artist->description = $request->description;
+		$artist->begin = $request->begin;
+		$artist->end = $request->end;
+		$artist->save();
 	}
 
 	/**
@@ -28,7 +33,11 @@ class ArtistController extends Controller
 	 */
 	public function update(ArtistRequest $request, Artist $artist)
 	{
-
+		$artist->name = $request->name;
+		$artist->description = $request->description;
+		$artist->begin = $request->begin;
+		$artist->end = $request->end;
+		$artist->save();
 	}
 
 	/**
@@ -39,6 +48,6 @@ class ArtistController extends Controller
 	 */
 	public function destroy(Artist $artist)
 	{
-
+		$artist->delete();
 	}
 }
