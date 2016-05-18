@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Artist;
-use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
@@ -12,9 +11,10 @@ class ArtistController extends Controller
 	/**
 	 * Store a newly created artist in storage.
 	 *
+	 * @param  ArtistRequest $request
 	 * @return Response
 	 */
-    public function store()
+    public function store(ArtistRequest $request)
 	{
 
 	}
@@ -22,10 +22,11 @@ class ArtistController extends Controller
 	/**
 	 * Update the specified artist in storage.
 	 *
+	 * @param  ArtistRequest $request
 	 * @param  Artist $artist
 	 * @return Response
 	 */
-	public function update(Artist $artist)
+	public function update(ArtistRequest $request, Artist $artist)
 	{
 
 	}

@@ -11,9 +11,10 @@ class UserController extends Controller
 	/**
 	 * Store a newly created user in storage.
 	 *
+	 * @param UserRequest $request
 	 * @return Response
 	 */
-	public function store()
+	public function store(UserRequest $request)
 	{
 
 	}

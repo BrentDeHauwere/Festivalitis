@@ -12,20 +12,22 @@ class NewsController extends Controller
 	/**
 	 * Store a newly created news in storage.
 	 *
+	 * @param NewsRequest $request
 	 * @return Response
 	 */
-	public function store()
+	public function store(NewsRequest $request)
 	{
-
+		
 	}
 
 	/**
 	 * Update the specified news in storage.
 	 *
+	 * @param NewsRequest $request
 	 * @param  News $news
 	 * @return Response
 	 */
-	public function update(News $news)
+	public function update(NewsRequest $request, News $news)
 	{
 
 	}

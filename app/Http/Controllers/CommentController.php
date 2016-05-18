@@ -12,9 +12,10 @@ class CommentController extends Controller
 	/**
 	 * Store a newly created comment in storage.
 	 *
+	 * @param  CommentRequest $request
 	 * @return Response
 	 */
-	public function store()
+	public function store(CommentRequest $request)
 	{
 
 	}
@@ -22,10 +23,11 @@ class CommentController extends Controller
 	/**
 	 * Update the specified comment in storage.
 	 *
+	 * @param  CommentRequest $request
 	 * @param  Comment $comment
 	 * @return Response
 	 */
-	public function update(Comment $comment)
+	public function update(CommentRequest $request, Comment $comment)
 	{
 
 	}

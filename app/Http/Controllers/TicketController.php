@@ -11,10 +11,11 @@ class TicketController extends Controller
 	/**
 	 * Store a newly created ticket in storage.
 	 *
+	 * @param TicketRequest $request
 	 * @return Response
 	 */
-	public function store()
+	public function store(TicketRequest $request)
 	{
-
+		
 	}
 }
