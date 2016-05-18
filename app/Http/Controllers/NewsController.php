@@ -17,7 +17,10 @@ class NewsController extends Controller
 	 */
 	public function store(NewsRequest $request)
 	{
-		
+		$news = new News();
+		$news->title = $request->title;
+		$news->description = $request->description;
+		$news->save();
 	}
 
 	/**
@@ -29,7 +32,9 @@ class NewsController extends Controller
 	 */
 	public function update(NewsRequest $request, News $news)
 	{
-
+		$news->title = $request->title;
+		$news->description = $request->description;
+		$news->save();
 	}
 
 	/**
@@ -40,6 +45,6 @@ class NewsController extends Controller
 	 */
 	public function destroy(News $news)
 	{
-
+		$news->delete();
 	}
 }
