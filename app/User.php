@@ -12,6 +12,13 @@ class User extends Model
 	 * @var array
 	 */
 	protected $guarded = ['id', 'admin'];
+
+	/**
+	 * The attributes that should be hidden for arrays.
+	 *
+	 * @var array
+	 */
+	protected $hidden = ['password'];
 	
 	/**
 	 * Get comments from the user.
