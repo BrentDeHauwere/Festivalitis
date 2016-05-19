@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Ticket;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use Illuminate\Support\Facades\Auth;
 
 class TicketController extends Controller
 {
@@ -16,6 +18,13 @@ class TicketController extends Controller
 	 */
 	public function store(TicketRequest $request)
 	{
+		$input = $request->all();
+		$input['user_id'] = Auth::id();
 		
+		$ticket = Ticket::create($request->all());
+
+		// Option 2:
+		// $ticket = new Article($request->all());
+		// $ticket->save();
 	}
 }
