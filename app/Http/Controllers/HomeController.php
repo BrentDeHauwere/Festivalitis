@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Artist;
 use App\News;
 use Illuminate\Http\Request;
 
@@ -16,6 +17,11 @@ class HomeController extends Controller
 	 */
     public function index()
 	{
-		return view('index');
+		$artists = Artist::all();
+		$news = News::with('comments.user')->get();
+
+		return view('index')
+			->withArtists($artists)
+			->withNews($news);
 	}
 }
