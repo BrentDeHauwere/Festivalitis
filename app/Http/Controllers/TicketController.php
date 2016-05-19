@@ -20,8 +20,8 @@ class TicketController extends Controller
 	{
 		$input = $request->all();
 		$input['user_id'] = Auth::id();
-		
-		$ticket = Ticket::create($request->all());
+
+		$ticket = Ticket::create($input);
 
 		// Option 2:
 		// $ticket = new Article($request->all());
