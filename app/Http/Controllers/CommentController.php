@@ -18,11 +18,10 @@ class CommentController extends Controller
 	 */
 	public function store(CommentRequest $request)
 	{
-		$comment = new Comment();
-		$comment->news_id = $request->news_id;
-		$comment->user_id = Auth::user()->id;
-		$comment->description = $request->description;
-		$comment->save();
+		$input = $request->all();
+		$input['user_id'] = Auth::id();
+
+		$comment = Comment::create($input);
 	}
 
 	/**
@@ -34,8 +33,10 @@ class CommentController extends Controller
 	 */
 	public function update(CommentRequest $request, Comment $comment)
 	{
-		$comment->description = $request->description;
-		$comment->save();
+		$input = $request->all();
+		array_forget($input, 'news_id');
+
+		$comment->update($request->all());
 	}
 
 	/**

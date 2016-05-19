@@ -17,10 +17,7 @@ class NewsController extends Controller
 	 */
 	public function store(NewsRequest $request)
 	{
-		$news = new News();
-		$news->title = $request->title;
-		$news->description = $request->description;
-		$news->save();
+		$news = News::create($request->all());
 	}
 
 	/**
@@ -32,9 +29,7 @@ class NewsController extends Controller
 	 */
 	public function update(NewsRequest $request, News $news)
 	{
-		$news->title = $request->title;
-		$news->description = $request->description;
-		$news->save();
+		$news = $news->update($request->all());
 	}
 
 	/**
