@@ -17,4 +17,4 @@ Route::resource('comment', 'CommentController', ['only' => ['store', 'update', '
 Route::resource('news', 'NewsController', ['only' => ['store', 'update', 'destroy']]);
 Route::resource('ticket', 'TicketController', ['only' => ['store']]);
 Route::resource('user', 'UserController', ['only' => ['store']]);
-
+Route::get('image/{type}/{filename}', 'ImageController@show');
