@@ -46,7 +46,7 @@
 
 	<!-- Line-up -->
 	<div class="ui segment" id="LineUp">
-		<h1 class="ui header">
+		<h1 class="ui header teal">
 			<i class="calendar icon"></i>
 			<div class="content">
 				Line-up
@@ -56,7 +56,7 @@
 		<div class="ui special cards four column grid">
 			@foreach($artists as $artist)
 				<div class="column">
-					<div class="ui fluid card">
+					<div class="ui fluid card teal">
 						<div class="blurring dimmable image">
 							<div class="ui dimmer">
 								<div class="content">
@@ -84,7 +84,7 @@
 
 	<!-- News -->
 	<div class="ui segment" id="News">
-		<h1 class="ui header">
+		<h1 class="ui header teal">
 			<i class="newspaper icon"></i>
 			<div class="content">
 				News
@@ -128,12 +128,12 @@
 								</div>
 							@endforeach
 						</div>
-							<div class="ui bottom attached action input">
-								<input type="text">
-								<button class="ui teal right labeled icon button">
-									Add Comment
-									<i class="edit icon"></i>
-								</button>
+						<div class="ui bottom attached action input">
+							<input type="text">
+							<button class="ui teal right labeled icon button">
+								Add Comment
+								<i class="edit icon"></i>
+							</button>
 						</div>
 					</div>
 				</div>
@@ -143,11 +143,36 @@
 
 	<!-- Contact -->
 	<div class="ui segment" id="Contact">
-		<h1 class="ui header">
+		<h1 class="ui header teal">
 			<i class="mail outline icon"></i>
 			<div class="content">
 				Contact
 			</div>
 		</h1>
+
+		<div class="ui segment">
+			<form class="ui form">
+				<div class="required field">
+					<label>First Name</label>
+					<input type="text" name="fname" placeholder="First Name">
+				</div>
+				<div class="required field">
+					<label>Last Name</label>
+					<input type="text" name="lname" placeholder="Last Name">
+				</div>
+				<div class="required field">
+					<label>Email</label>
+					<input type="email" name="email" placeholder="Email">
+				</div>
+				<div class="required field">
+					<label>Message</label>
+					<textarea name="message" placeholder="Message"></textarea>
+				</div>
+				<button class="ui button right labeled icon teal fluid" type="submit">
+					<i class="icon send"></i>
+					Submit
+				</button>
+			</form>
+		</div>
 	</div>
 @endsection

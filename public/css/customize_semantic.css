@@ -8,11 +8,10 @@
 
 
 /*
- ========== CONTENT ==========
+ ========== OVERALL ==========
  */
 
 #LineUp, #News, #Contact {
-	min-height: 100vh;
 	width: 90%;
 	margin-left: auto;
 	margin-right: auto;
