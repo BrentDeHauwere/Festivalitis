@@ -4,7 +4,8 @@
 	<!-- Timeago: a jQuery plugin that makes it easy to support automatically updating fuzzy timestamps (e.g. "4 minutes ago" or "about 1 day ago"). -->
 	<script src="/js/jquery.timeago.js" type="text/javascript"></script>
 	<script>
-		jQuery(document).ready(function() {
+		jQuery(document).ready(function ()
+		{
 			jQuery("time.timeago").timeago();
 		});
 	</script>
@@ -18,10 +19,10 @@
 			});
 		});
 	</script>
-	@endsection
+@endsection
 
-	@section('content')
-		<!-- Home -->
+@section('content')
+	<!-- Home -->
 	<div class="ui inverted vertical masthead center aligned segment" id="Home">
 		<div class="background"></div>
 		<div class="ui text container">
@@ -70,10 +71,10 @@
 							<p class="header">{{ $artist->name }}</p>
 						</div>
 						<div class="extra content">
-						<span class="date">
-								<i class="calendar icon"></i>
-							{{ date('H:i', strtotime($artist->begin)) }} - {{ date('H:i', strtotime($artist->end)) }}
-						</span>
+							<span class="date">
+									<i class="calendar icon"></i>
+								{{ date('H:i', strtotime($artist->begin)) }} - {{ date('H:i', strtotime($artist->end)) }}
+							</span>
 						</div>
 					</div>
 				</div>
@@ -97,11 +98,42 @@
 						<div class="content">
 							<div class="header left floated">{{ $item->title }}</div>
 							<div class="meta">
-								<span class="right floated time"><time class="timeago" datetime="{{ $item->created_at }}">July 17, 2008</time></span>
+								<span class="right floated time"><time class="timeago" datetime="{{ $item->created_at }}">
+										July 17, 2008
+									</time></span>
 							</div>
 							<div class="description">
 								<p>{{ $item->description }}</p>
 							</div>
+						</div>
+						<div class="extra content">
+							@foreach($item->comments as $comment)
+								<div class="ui comments">
+									<div class="comment">
+										<a class="avatar">
+											<img src="{{ action('ImageController@show', ['type' => 'user', 'filename' => $comment->user_id]) }}">
+										</a>
+										<div class="content">
+											<span class="author">{{ "{$comment->user->fname} {$comment->user->lname}" }}</span>
+											<div class="metadata">
+												<span class="date"><time class="timeago" datetime="{{ $comment->created_at }}">
+														July 17, 2008
+													</time></span>
+											</div>
+											<div class="text">
+												{{ $comment->description }}
+											</div>
+										</div>
+									</div>
+								</div>
+							@endforeach
+						</div>
+							<div class="ui bottom attached action input">
+								<input type="text">
+								<button class="ui teal right labeled icon button">
+									Add Comment
+									<i class="edit icon"></i>
+								</button>
 						</div>
 					</div>
 				</div>

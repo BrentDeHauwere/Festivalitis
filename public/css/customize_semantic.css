@@ -74,6 +74,11 @@
 	margin: 0 auto;
 }
 
+
+/*
+ ========== NEWS ==========
+ */
+
 #News .column {
 	padding-left: 0px;
 	padding-right: 0px;
@@ -81,4 +86,14 @@
 
 #News .cards .header {
 	margin-bottom: 14px;
+}
+
+#News .cards .bottom > input {
+	border-top-left-radius: 0;
+	border-left: 0;
+	border-bottom: 0;
+}
+
+#News .cards .bottom > button {
+	border-top-right-radius: 0;
 }
