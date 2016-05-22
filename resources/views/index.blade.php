@@ -1,6 +1,15 @@
 @extends('master')
 
 @section('script')
+	<!-- Timeago: a jQuery plugin that makes it easy to support automatically updating fuzzy timestamps (e.g. "4 minutes ago" or "about 1 day ago"). -->
+	<script src="/js/jquery.timeago.js" type="text/javascript"></script>
+	<script>
+		jQuery(document).ready(function() {
+			jQuery("time.timeago").timeago();
+		});
+	</script>
+
+	<!-- Line-up: description on hover -->
 	<script>
 		$(document).ready(function ()
 		{
@@ -58,7 +67,7 @@
 							<img src="{{ action('ImageController@show', ['type' => 'artist', 'filename' => $artist->id]) }}">
 						</div>
 						<div class="content">
-							<a class="header">{{ $artist->name }}</a>
+							<p class="header">{{ $artist->name }}</p>
 						</div>
 						<div class="extra content">
 						<span class="date">
@@ -80,6 +89,24 @@
 				News
 			</div>
 		</h1>
+
+		<div class="ui cards one column grid">
+			@foreach($news as $item)
+				<div class="column">
+					<div class="ui fluid card">
+						<div class="content">
+							<div class="header left floated">{{ $item->title }}</div>
+							<div class="meta">
+								<span class="right floated time"><time class="timeago" datetime="{{ $item->created_at }}">July 17, 2008</time></span>
+							</div>
+							<div class="description">
+								<p>{{ $item->description }}</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			@endforeach
+		</div>
 	</div>
 
 	<!-- Contact -->

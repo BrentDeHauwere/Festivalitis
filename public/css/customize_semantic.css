@@ -73,3 +73,12 @@
 	width: 90%;
 	margin: 0 auto;
 }
+
+#News .column {
+	padding-left: 0px;
+	padding-right: 0px;
+}
+
+#News .cards .header {
+	margin-bottom: 14px;
+}
