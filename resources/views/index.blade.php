@@ -87,6 +87,25 @@
 					}
 				});
 			});
+
+			$('#formComment').submit(function (event)
+			{
+				event.preventDefault();
+
+				// If description is empty, don't do anything
+				if (!$('#formComment [name=description]:input').val())
+					return;
+
+				$.ajax({
+					url: '{{ action('CommentController@store') }}',
+					type: 'POST',
+					data: $('#formComment').serialize(),
+					success: function ()
+					{
+						initMessage('success', 'Comment was added successfully.');
+					}
+				});
+			});
 		});
 	</script>
 @endsection
@@ -198,13 +217,14 @@
 								</div>
 							@endforeach
 						</div>
-						<div class="ui bottom attached action input">
-							<input type="text">
-							<button class="ui teal right labeled icon button">
+						<form class="ui bottom attached action input" id="formComment">
+							<input type="hidden" name="news_id" value="{{ $item->id }}">
+							<input type="text" name="description" placeholder="Comment">
+							<button class="ui teal right labeled icon button" type="submit">
 								Add Comment
 								<i class="edit icon"></i>
 							</button>
-						</div>
+						</form>
 					</div>
 				</div>
 			@endforeach
