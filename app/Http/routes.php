@@ -11,6 +11,12 @@
 |
 */
 
+// ---------- AUTHENTICATION ----------
+Route::get('login','AuthController@index');
+Route::post('login','AuthController@login');
+Route::get('logout','AuthController@logout');
+
+// ---------- WEBSITE ----------
 Route::get('/', 'HomeController@index');
 Route::resource('artist', 'ArtistController', ['only' => ['store', 'update', 'destroy']]);
 Route::resource('comment', 'CommentController', ['only' => ['store', 'update', 'destroy']]);
