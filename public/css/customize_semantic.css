@@ -11,6 +11,15 @@
  ========== OVERALL ==========
  */
 
+.ui.message {
+	position: fixed;
+	width: 90%;
+	left: 5%;
+	top: 60px;
+	z-index: 10;
+	display: none;
+}
+
 #LineUp, #News, #Contact {
 	width: 90%;
 	margin-left: auto;

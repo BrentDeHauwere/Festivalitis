@@ -26,7 +26,24 @@
 			});
 		</script>
 
+		<!-- Message system: close -->
+		<script>
+			$(document).ready(function()
+			{
+				$('.message .close')
+					.on('click', function ()
+					{
+						$(this)
+							.closest('.message')
+							.transition('fade')
+						;
+					});
+			});
+		</script>
+
 		@yield('script')
+
+		@yield('ajax')
 	</head>
 	<body>
 		<!-- Navigation -->
@@ -48,6 +65,15 @@
 					Login
 				</a>
 			</div>
+		</div>
+
+		<!-- Message system -->
+		<div class='ui success message'>
+			<div class='header'>
+				Placeholder
+			</div>
+			<i class='close icon'></i>
+			<span>Placeholder</span>
 		</div>
 
 		<!-- Content -->

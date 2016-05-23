@@ -21,6 +21,76 @@
 	</script>
 @endsection
 
+@section('ajax')
+	<script>
+		$(document).ready(function ()
+		{
+			/**
+			 * Message system: show message to user
+			 * @param {String} type
+			 * @param {String} description
+			 * @param {String} title
+			 * @param {Number} delay
+			 */
+			function initMessage(type, description, title, delay) {
+				// Default parameters
+				if (typeof(title) === 'undefined')
+					title = type.charAt(0).toUpperCase() + type.slice(1);
+				if (typeof(delay) === 'undefined')
+					delay = 5000;
+
+				$('.message').removeClass('error success info warning').addClass(type);
+				$('.message .header').html(title);
+				$('.message span').html(description);
+				$('.message').fadeIn().delay(delay).fadeOut();
+			}
+
+			/**
+			 * Message system: show error messages on form to user
+			 * @param {String} errors
+			 * @param {String} form
+			 */
+			function initErrorMessages(errors, form) {
+				$.each(errors, function (key, value)
+				{
+					$(form + ' [name=' + key + ']:input')
+						.parent().append('<div class="ui pointing red basic label">' + value + '</div>');
+				});
+			}
+
+			/**
+			 * Message system: clear error messages on form
+			 * @param {String} form
+			 */
+			function clearErrorMessages(form) {
+				$(form + ' .ui.pointing.red.basic.label').remove();
+			}
+
+			// Contact: send mail
+			$('#formContact').submit(function (event)
+			{
+				event.preventDefault();
+				clearErrorMessages('#formContact');
+
+				$.ajax({
+					url: '{{ action('MailController@send') }}',
+					type: 'POST',
+					data: $('#formContact').serialize(),
+					success: function ()
+					{
+						initMessage('success', 'Mail was sent successfully.');
+					},
+					error: function (request, status, error)
+					{
+						initMessage('error', 'Mail was not sent. Please fill out the form correctly.');
+						initErrorMessages(request.responseJSON, '#formContact');
+					}
+				});
+			});
+		});
+	</script>
+@endsection
+
 @section('content')
 	<!-- Home -->
 	<div class="ui inverted vertical masthead center aligned segment" id="Home">
@@ -67,7 +137,7 @@
 							</div>
 							<img src="{{ action('ImageController@show', ['type' => 'artist', 'filename' => $artist->id]) }}">
 						</div>
-						<div class="content">
+						<div class="content teal">
 							<p class="header">{{ $artist->name }}</p>
 						</div>
 						<div class="extra content">
@@ -151,22 +221,23 @@
 		</h1>
 
 		<div class="ui segment">
-			<form class="ui form">
+			<form class="ui form" id="formContact">
+				{{ csrf_field() }}
 				<div class="required field">
 					<label>First Name</label>
-					<input type="text" name="fname" placeholder="First Name">
+					<input type="text" name="fname" placeholder="First Name" required>
 				</div>
 				<div class="required field">
 					<label>Last Name</label>
-					<input type="text" name="lname" placeholder="Last Name">
+					<input type="text" name="lname" placeholder="Last Name" required>
 				</div>
 				<div class="required field">
 					<label>Email</label>
-					<input type="email" name="email" placeholder="Email">
+					<input type="email" name="email" placeholder="Email" required>
 				</div>
 				<div class="required field">
 					<label>Message</label>
-					<textarea name="message" placeholder="Message"></textarea>
+					<textarea name="message" placeholder="Message" required></textarea>
 				</div>
 				<button class="ui button right labeled icon teal fluid" type="submit">
 					<i class="icon send"></i>

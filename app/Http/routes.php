@@ -18,3 +18,4 @@ Route::resource('news', 'NewsController', ['only' => ['store', 'update', 'destro
 Route::resource('ticket', 'TicketController', ['only' => ['store']]);
 Route::resource('user', 'UserController', ['only' => ['store']]);
 Route::get('image/{type}/{filename}', 'ImageController@show');
+Route::post('mail/send', 'MailController@send');
