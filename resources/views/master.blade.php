@@ -62,7 +62,7 @@
 			</a>
 			<div class="right menu">
 				<a class="ui item">
-					Login
+					{{ Auth::user()->fname . ' ' . Auth::user()->lname }}
 				</a>
 			</div>
 		</div>
