@@ -27,7 +27,7 @@
 		<link rel="stylesheet" type="text/css" href="/semantic/dist/components/message.css">
 		<link rel="stylesheet" type="text/css" href="/semantic/dist/components/icon.css">
 
-		<script src="https://code.jquery.com/jquery-2.2.3.min.js" integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo=" crossorigin="anonymous"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
 		<script src="/semantic/dist/components/form.js"></script>
 		<script src="/semantic/dist/components/transition.js"></script>
 
@@ -44,9 +44,25 @@
 			.column {
 				max-width: 450px;
 			}
+			.message {
+				width: 90%;
+				left: 5%;
+				top: 40px;
+				position: fixed !important;
+			}
 		</style>
 	</head>
 	<body>
+		@if(session('error'))
+			<!-- Message system -->
+			<div class='ui error message'>
+				<div class='header'>
+					Error
+				</div>
+				<span>{{ session('error') }}</span>
+			</div>
+		@endif
+
 		<div class="ui middle aligned center aligned grid">
 			<div class="column">
 				<h2 class="ui teal image header">
@@ -60,13 +76,13 @@
 						<div class="field">
 							<div class="ui left icon input">
 								<i class="user icon"></i>
-								<input type="text" name="email" placeholder="E-mail address">
+								<input type="email" name="email" placeholder="E-mail address" required>
 							</div>
 						</div>
 						<div class="field">
 							<div class="ui left icon input">
 								<i class="lock icon"></i>
-								<input type="password" name="password" placeholder="Password">
+								<input type="password" name="password" placeholder="Password" required>
 							</div>
 						</div>
 						<button class="ui fluid large teal submit button">Login</button>
