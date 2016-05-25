@@ -225,14 +225,16 @@
 								</div>
 							@endforeach
 						</div>
-						<form class="ui bottom attached action input" id="formComment">
-							<input type="hidden" name="news_id" value="{{ $item->id }}">
-							<input type="text" name="description" placeholder="Comment">
-							<button class="ui teal right labeled icon button" type="submit">
-								Add Comment
-								<i class="edit icon"></i>
-							</button>
-						</form>
+						@if(Auth::check())
+							<form class="ui bottom attached action input" id="formComment">
+								<input type="hidden" name="news_id" value="{{ $item->id }}">
+								<input type="text" name="description" placeholder="Comment">
+								<button class="ui teal right labeled icon button" type="submit">
+									Add Comment
+									<i class="edit icon"></i>
+								</button>
+							</form>
+						@endif
 					</div>
 				</div>
 			@endforeach
