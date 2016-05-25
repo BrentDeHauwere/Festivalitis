@@ -13,16 +13,23 @@
 		<!-- Semantic UI - JS -->
 		<script src="/semantic/dist/semantic.min.js"></script>
 		<script>
-			$(document).ready(function() {
+			$(document).ready(function ()
+			{
 				$('.menu')
-					.on('click', '.item', function() {
-						if(!$(this).hasClass('dropdown')) {
+					.on('click', '.item', function ()
+					{
+						if (!$(this).hasClass('dropdown'))
+						{
 							$(this)
 								.addClass('active')
 								.siblings('.item')
 								.removeClass('active');
 						}
 					});
+
+				$('.ui.dropdown')
+					.dropdown()
+				;
 			});
 		</script>
 
@@ -62,9 +69,19 @@
 			</a>
 			<div class="right menu">
 				@if(Auth::check())
-					<a class="ui item">
+					<div class="ui dropdown item" id="user">
 						{{ Auth::user()->fname . ' ' . Auth::user()->lname }}
-					</a>
+						<div class="menu">
+							<a class="ui red item" href="{{ action('HomeController@index') }}">
+								<i class="configure icon"></i>
+								Configuration Panel
+							</a>
+							<a class="ui red item" href="{{ action('AuthController@logout') }}">
+								<i class="sign out icon"></i>
+								Logout
+							</a>
+						</div>
+					</div>
 				@else
 					<a class="ui item" href="{{ action("AuthController@login") }}">
 						Login
