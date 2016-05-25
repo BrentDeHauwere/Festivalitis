@@ -17,7 +17,6 @@ Route::post('login','AuthController@login');
 
 // ---------- WEBSITE (all users) ----------
 Route::get('/', 'HomeController@index');
-Route::get('/panel', 'HomeController@configurationPanel');
 Route::resource('user', 'UserController', ['only' => ['store']]);
 Route::get('image/{type}/{filename}', 'ImageController@show');
 Route::post('mail/send', 'MailController@send');
@@ -30,6 +29,7 @@ Route::group(['middleware' => 'user'], function () {
 
 	Route::group(['middleware' => 'moderator'], function () {
 		// ---------- WEBSITE (only moderators) ----------
+		Route::get('/panel', 'HomeController@configurationPanel');
 		Route::resource('artist', 'ArtistController', ['only' => ['store', 'update', 'destroy']]);
 		Route::resource('news', 'NewsController', ['only' => ['store', 'update', 'destroy']]);
 	});
