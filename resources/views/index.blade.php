@@ -96,21 +96,39 @@
 				});
 			});
 
-			$('#formComment').submit(function (event)
+			// ---------- News: add comment ----------
+			$('.formComment').submit(function (event)
 			{
 				event.preventDefault();
 
+				var form = $(this);
+
 				// If description is empty, don't do anything
-				if (!$('#formComment [name=description]:input').val())
+				if (!form.find('[name=description]:input').val())
 					return;
 
 				$.ajax({
 					url: '{{ action('CommentController@store') }}',
 					type: 'POST',
-					data: $('#formComment').serialize(),
-					success: function ()
+					dataType: 'json',
+					data: form.serialize(),
+					success: function (data)
 					{
+						// Clear input field
+						form.find('[name=description]:input').val('');
+
+						// Add comment in view
+						console.log(data);
+						console.log(data.user.email);
+						form.prev().append('<div class="ui comments"><div class="comment"><a class="avatar"><img src="image/user/' + data.user_id + '"></a> <div class="content"><span class="author">' + data.user.fname + ' ' + data.user.lname + '</span><div class="metadata"><span class="date"><time class="timeago" datetime="' + data.created_at + '">July 17, 2008</time></span></div><div class="text">' + data.description +'</div></div></div></div>');
+						form.prev().find('time.timeago').timeago();
+
+						// Message: success
 						initMessage('success', 'Comment was added successfully.');
+					},
+					error: function (request)
+					{
+						console.log(request);
 					}
 				});
 			});
@@ -226,9 +244,10 @@
 							@endforeach
 						</div>
 						@if(Auth::check())
-							<form class="ui bottom attached action input" id="formComment">
+							<form class="ui bottom attached action input formComment">
+								{{ csrf_field() }}
 								<input type="hidden" name="news_id" value="{{ $item->id }}">
-								<input type="text" name="description" placeholder="Comment">
+								<input type="text" name="description" placeholder="Comment" autocomplete="off">
 								<button class="ui teal right labeled icon button" type="submit">
 									Add Comment
 									<i class="edit icon"></i>

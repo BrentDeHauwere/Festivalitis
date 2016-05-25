@@ -36,7 +36,7 @@ class CommentRequest extends Request
     public function rules()
     {
         return [
-            'news_id'		=> 'required|exists:news',
+            'news_id'		=> 'required|exists:news,id',
             'description'	=> 'required',
         ];
     }

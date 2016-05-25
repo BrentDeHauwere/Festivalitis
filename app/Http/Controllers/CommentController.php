@@ -6,6 +6,7 @@ use App\Comment;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use App\Http\Requests\CommentRequest;
 use Illuminate\Support\Facades\Auth;
 
 class CommentController extends Controller
@@ -18,10 +19,13 @@ class CommentController extends Controller
 	 */
 	public function store(CommentRequest $request)
 	{
-		$input = $request->all();
-		$input['user_id'] = Auth::id();
+		$comment = new Comment($request->all());
+		$comment->user_id = Auth::id();
+		$comment->save();
 
-		$comment = Comment::create($input);
+		$comment->load('user');
+
+		return $comment;
 	}
 
 	/**
