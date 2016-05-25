@@ -82,6 +82,10 @@
 					},
 					error: function (request, status, error)
 					{
+						alert(jqXHR.status);
+						alert(textStatus);
+						alert(errorThrown);
+
 						initMessage('error', 'Mail was not sent. Please fill out the form correctly.');
 						initErrorMessages(request.responseJSON, '#formContact');
 					}

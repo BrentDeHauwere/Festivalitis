@@ -61,9 +61,15 @@
 				Contact
 			</a>
 			<div class="right menu">
-				<a class="ui item">
-					{{ Auth::user()->fname . ' ' . Auth::user()->lname }}
-				</a>
+				@if(Auth::check())
+					<a class="ui item">
+						{{ Auth::user()->fname . ' ' . Auth::user()->lname }}
+					</a>
+				@else
+					<a class="ui item" href="{{ action("AuthController@login") }}">
+						Login
+					</a>
+				@endif
 			</div>
 		</div>
 
