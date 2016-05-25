@@ -66,7 +66,7 @@
 				$(form + ' .ui.pointing.red.basic.label').remove();
 			}
 
-			// Contact: send mail
+			// ---------- Contact: send mail ----------
 			$('#formContact').submit(function (event)
 			{
 				event.preventDefault();
