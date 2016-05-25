@@ -66,34 +66,21 @@
 				$(form + ' .ui.pointing.red.basic.label').remove();
 			}
 
-			// ---------- Contact: send mail ----------
-			$('#formContact').submit(function (event)
+			// ---------- Home: select artist ----------
+			$("input[list=artists]").on('input', function ()
 			{
-				event.preventDefault();
-				clearErrorMessages('#formContact');
+				var val = this.value;
+				if ($('#artists').find('option').filter(function ()
+					{
+						return this.value.toUpperCase() === val.toUpperCase();
+					}).length)
+				{
+					var artistHeader = $('#LineUp .header:contains(' + this.value + ')');
 
-				$.ajax({
-					url: '{{ action('MailController@send') }}',
-					type: 'POST',
-					data: $('#formContact').serialize(),
-					success: function ()
-					{
-						initMessage('success', 'Mail was sent successfully.');
-					},
-					error: function (request)
-					{
-						switch (request.status)
-						{
-							case 422:
-								initMessage('error', 'Mail was not sent. Please fill out the form correctly.');
-								initErrorMessages(request.responseJSON, '#formContact');
-								break;
-							default:
-								initMessage('error', 'Mail was not sent. Error ' + request.status + ': ' + request.statusText + '.');
-								break;
-						}
-					}
-				});
+					$('html, body').animate({
+						scrollTop: artistHeader.parents('.column').offset().top - $('.menu').height()
+					}, 500);
+				}
 			});
 
 			// ---------- News: add comment ----------
@@ -132,6 +119,36 @@
 					}
 				});
 			});
+
+			// ---------- Contact: send mail ----------
+			$('#formContact').submit(function (event)
+			{
+				event.preventDefault();
+				clearErrorMessages('#formContact');
+
+				$.ajax({
+					url: '{{ action('MailController@send') }}',
+					type: 'POST',
+					data: $('#formContact').serialize(),
+					success: function ()
+					{
+						initMessage('success', 'Mail was sent successfully.');
+					},
+					error: function (request)
+					{
+						switch (request.status)
+						{
+							case 422:
+								initMessage('error', 'Mail was not sent. Please fill out the form correctly.');
+								initErrorMessages(request.responseJSON, '#formContact');
+								break;
+							default:
+								initMessage('error', 'Mail was not sent. Error ' + request.status + ': ' + request.statusText + '.');
+								break;
+						}
+					}
+				});
+			});
 		});
 	</script>
 @endsection
@@ -152,7 +169,7 @@
 				</div>
 				<datalist id="artists" class="results">
 					@foreach($artists as $artist)
-						<option value="{{ $artist->name }}">
+						<option value="{{ $artist->name }}"><input type="hidden" value="{{ $artist->id }}"></option>
 					@endforeach
 				</datalist>
 			</div>
