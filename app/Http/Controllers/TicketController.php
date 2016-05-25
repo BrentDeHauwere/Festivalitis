@@ -6,6 +6,7 @@ use App\Ticket;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use App\Http\Requests\TicketRequest;
 use Illuminate\Support\Facades\Auth;
 
 class TicketController extends Controller

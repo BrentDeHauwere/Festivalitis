@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Artist;
 
 use App\Http\Requests;
+use App\Http\Requests\ArtistRequest;
+
 
 class ArtistController extends Controller
 {
