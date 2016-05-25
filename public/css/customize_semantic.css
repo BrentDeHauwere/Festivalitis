@@ -11,6 +11,12 @@
  ========== OVERALL ==========
  */
 
+.group:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+
 .ui.message {
 	position: fixed;
 	width: 90%;
@@ -20,7 +26,7 @@
 	display: none;
 }
 
-#LineUp, #News, #Contact {
+#LineUp, #News, #Contact, #ConfigurationPanel {
 	width: 90%;
 	margin-left: auto;
 	margin-right: auto;

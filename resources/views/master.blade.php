@@ -72,11 +72,11 @@
 					<div class="ui dropdown item" id="user">
 						{{ Auth::user()->fname . ' ' . Auth::user()->lname }}
 						<div class="menu">
-							<a class="ui red item" href="{{ action('HomeController@configurationPanel') }}">
+							<a class="ui item" href="{{ action('HomeController@configurationPanel') }}">
 								<i class="configure icon"></i>
 								Configuration Panel
 							</a>
-							<a class="ui red item" href="{{ action('AuthController@logout') }}">
+							<a class="ui item" href="{{ action('AuthController@logout') }}">
 								<i class="sign out icon"></i>
 								Logout
 							</a>
