@@ -24,4 +24,14 @@ class HomeController extends Controller
 			->withArtists($artists)
 			->withNews($news);
 	}
+
+	/**
+	 * Show the configuration panel.
+	 *
+	 * @return Response
+	 */
+	public function configurationPanel()
+	{
+		return view('configuration_panel');
+	}
 }

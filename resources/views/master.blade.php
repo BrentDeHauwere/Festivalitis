@@ -55,16 +55,16 @@
 	<body>
 		<!-- Navigation -->
 		<div class="ui secondary top fixed pointing menu">
-			<a class="item active" href="#Home">
+			<a class="item" href="{{ action('HomeController@index') }}#Home">
 				Home
 			</a>
-			<a class="item" href="#LineUp">
+			<a class="item" href="{{ action('HomeController@index') }}#LineUp">
 				Line-up
 			</a>
-			<a class="item" href="#News">
+			<a class="item" href="{{ action('HomeController@index') }}#News">
 				News
 			</a>
-			<a class="item" href="#Contact">
+			<a class="item" href="{{ action('HomeController@index') }}#Contact">
 				Contact
 			</a>
 			<div class="right menu">
@@ -72,7 +72,7 @@
 					<div class="ui dropdown item" id="user">
 						{{ Auth::user()->fname . ' ' . Auth::user()->lname }}
 						<div class="menu">
-							<a class="ui red item" href="{{ action('HomeController@index') }}">
+							<a class="ui red item" href="{{ action('HomeController@configurationPanel') }}">
 								<i class="configure icon"></i>
 								Configuration Panel
 							</a>

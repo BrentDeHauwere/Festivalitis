@@ -1,6 +1,14 @@
 @extends('master')
 
 @section('script')
+	<!-- Default active menu item: home -->
+	<script>
+		$(document).ready(function ()
+		{
+			$('div.menu a.item').first().addClass('active');
+		});
+	</script>
+
 	<!-- Timeago: a jQuery plugin that makes it easy to support automatically updating fuzzy timestamps (e.g. "4 minutes ago" or "about 1 day ago"). -->
 	<script src="/js/jquery.timeago.js" type="text/javascript"></script>
 	<script>
