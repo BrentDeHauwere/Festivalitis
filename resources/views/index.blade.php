@@ -80,14 +80,18 @@
 					{
 						initMessage('success', 'Mail was sent successfully.');
 					},
-					error: function (request, status, error)
+					error: function (request)
 					{
-						alert(jqXHR.status);
-						alert(textStatus);
-						alert(errorThrown);
-
-						initMessage('error', 'Mail was not sent. Please fill out the form correctly.');
-						initErrorMessages(request.responseJSON, '#formContact');
+						switch (request.status)
+						{
+							case 422:
+								initMessage('error', 'Mail was not sent. Please fill out the form correctly.');
+								initErrorMessages(request.responseJSON, '#formContact');
+								break;
+							default:
+								initMessage('error', 'Mail was not sent. Error ' + request.status + ': ' + request.statusText + '.');
+								break;
+						}
 					}
 				});
 			});
