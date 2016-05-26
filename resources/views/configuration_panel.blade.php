@@ -2,8 +2,42 @@
 
 @section('script')
 	<script>
+		// ---------- Source: http://www.w3schools.com/js/js_cookies.asp ----------
+		function getCookie(cname) {
+			var name = cname + "=";
+			var ca = document.cookie.split(';');
+			for(var i = 0; i <ca.length; i++) {
+				var c = ca[i];
+				while (c.charAt(0)==' ') {
+					c = c.substring(1);
+				}
+				if (c.indexOf(name) == 0) {
+					return c.substring(name.length,c.length);
+				}
+			}
+			return "";
+		}
+
 		$(document).ready(function ()
 		{
+			// ---------- Open the last opened tab ----------
+			$('#ConfigurationPanel .tabular.menu .item').removeClass('active');
+			switch (getCookie('activeTab'))
+			{
+				case 'artists':
+					$('#ConfigurationPanel .tabular.menu [data-tab=artists].item').addClass('active');
+					$.tab('change tab', 'artists');
+					break;
+				case 'news':
+					$('#ConfigurationPanel .tabular.menu [data-tab=news].item').addClass('active');
+					$.tab('change tab', 'news');
+					break;
+				default:
+					$('#ConfigurationPanel .tabular.menu [data-tab=accounts].item').addClass('active');
+					$.tab('change tab', 'accounts');
+					break;
+			}
+
 			$('.menu .item')
 				.tab()
 			;
@@ -50,9 +84,9 @@
 		</h1>
 
 		<div class="ui top attached tabular menu">
-			<a class="item {{ (empty($_COOKIE['activeTab']) || $_COOKIE['activeTab'] == 'accounts') ? 'active' : '' }}" data-tab="accounts">Accounts</a>
-			<a class="item {{ (!empty($_COOKIE['activeTab']) && $_COOKIE['activeTab'] == 'artists') ? 'active' : '' }}" data-tab="artists">Artists</a>
-			<a class="item {{ (!empty($_COOKIE['activeTab']) && $_COOKIE['activeTab'] == 'news') ? 'active' : '' }}" data-tab="news">News</a>
+			<a class="item" data-tab="accounts">Accounts</a>
+			<a class="item" data-tab="artists">Artists</a>
+			<a class="item" data-tab="news">News</a>
 		</div>
 
 		<!-- Add Account -->
