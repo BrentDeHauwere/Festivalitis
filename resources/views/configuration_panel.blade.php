@@ -42,9 +42,15 @@
 				.tab()
 			;
 
+			// ---------- Set cookie if tab got opened ----------
 			$('#ConfigurationPanel .tabular.menu .item').click(function ()
 			{
 				document.cookie = 'activeTab=' + $(this).attr('data-tab');
+			});
+
+			$('#ConfigurationPanel .ui.error.message').delay(5000).fadeOut(400, function ()
+			{
+				$(this).remove();
 			});
 		});
 	</script>
