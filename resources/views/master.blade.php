@@ -33,7 +33,7 @@
 			});
 		</script>
 
-		<!-- Message system: close -->
+		<!-- Message system - jQuery: close -->
 		<script>
 			$(document).ready(function()
 			{
@@ -48,6 +48,27 @@
 							})
 						;
 					});
+			});
+		</script>
+
+		<script>
+			$(document).ready(function ()
+			{
+				$('.laravelMessage').delay(5000).fadeOut(400, function ()
+				{
+					$(this).remove();
+				});
+			});
+		</script>
+
+		<!-- Submit user image when selected -->
+		<script type="text/javascript">
+			$(function ()
+			{
+				$('#imageUser').change(function ()
+				{
+					$('#setUserImage').submit();
+				});
 			});
 		</script>
 
@@ -74,10 +95,17 @@
 				@if(Auth::check())
 					<div class="ui dropdown item" id="user">
 						{{ Auth::user()->fname . ' ' . Auth::user()->lname }}
+						<img class="ui avatar image" src="{{ action('ImageController@show', ['type' => 'user', 'filename' => Auth::id()]) }}">
 						<div class="menu">
 							<a class="ui item" href="{{ action('HomeController@configurationPanel') }}">
 								<i class="configure icon"></i>
 								Configuration Panel
+							</a>
+							<form id="setUserImage" method="post" action="{{ action('UserController@image') }}" enctype="multipart/form-data">{{ csrf_field() }}</form>
+							<a class="item">
+								<label for="imageUser" class="ui icon" style="cursor: pointer"><i class="file image outline icon"></i>Set
+									Picture</label>
+								<input type="file" id="imageUser" name="image" form="setUserImage" style="display:none">
 							</a>
 							<a class="ui item" href="{{ action('AuthController@logout') }}">
 								<i class="sign out icon"></i>
@@ -93,7 +121,7 @@
 			</div>
 		</div>
 
-		<!-- Message system -->
+		<!-- Message system - jQuery -->
 		<div class='ui success message'>
 			<div class='header'>
 				Placeholder
@@ -101,6 +129,26 @@
 			<i class='close icon'></i>
 			<span>Placeholder</span>
 		</div>
+
+		<!-- Message system - Laravel -->
+		@if(session('success'))
+			<div class="ui success message laravelMessage">
+				<i class="close icon"></i>
+				<div class="header">
+					Success
+				</div>
+				<p>{{ session('success') }}</p>
+			</div>
+		@endif
+		@if(session('error'))
+			<div class="ui success message laravelMessage">
+				<i class="close icon"></i>
+				<div class="header">
+					Error
+				</div>
+				<p>{{ session('error') }}</p>
+			</div>
+			@endif
 
 		<!-- Content -->
 		@yield('content')

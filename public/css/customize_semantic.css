@@ -6,6 +6,10 @@
 	background-color: white !important;
 }
 
+.menu img.avatar {
+	margin-left: 5px !important;
+}
+
 
 /*
  ========== OVERALL ==========
@@ -15,6 +19,10 @@
 	content: "";
 	display: table;
 	clear: both;
+}
+
+.laravelMessage {
+	display: block !important;
 }
 
 .ui.message {

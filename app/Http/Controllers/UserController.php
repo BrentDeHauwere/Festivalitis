@@ -9,6 +9,7 @@ use App\Http\Requests;
 use App\Http\Requests\UserRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
@@ -38,5 +39,36 @@ class UserController extends Controller
 		$user = User::create($input);
 
 		return redirect()->action('HomeController@configurationPanel')->with('success', 'Account was successfully created.');
+	}
+
+	/**
+	 * Set an image for a user.
+	 *
+	 * @param Request
+	 * @return Response
+	 */
+	public function image(Request $request)
+	{
+		// Server-side validation
+		$validator = Validator::make($request->all(), [
+			'image' => 'required|image',
+		]);
+
+		if ($validator->fails()) {
+			return redirect()->back()
+				->with('error', $validator->errors()->first('image'));
+		}
+
+		// First check if there was an image uploaded already, if so remove
+		$paths = glob(storage_path() . '/app/user_images/' . Auth::user()->id . '*');
+		if (count($paths) != 0) {
+			unlink($paths[0]);
+		}
+
+		$destinationPath = storage_path() . '/app/user_images/';
+		$fileName = Auth::user()->id . '.' . $request->file('image')->getClientOriginalExtension();
+		$request->file('image')->move($destinationPath, $fileName);
+
+		return redirect()->back()->with('success', 'Your profile picture was successfully uploaded.');
 	}
 }

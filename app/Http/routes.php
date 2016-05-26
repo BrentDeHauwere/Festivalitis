@@ -25,6 +25,7 @@ Route::group(['middleware' => 'user'], function () {
 	// ---------- WEBSITE (all authenticated users) ----------
 	Route::resource('comment', 'CommentController', ['only' => ['store', 'update', 'destroy']]);
 	Route::resource('ticket', 'TicketController', ['only' => ['store']]);
+	Route::post('user/image', 'UserController@image');
 	Route::get('logout','AuthController@logout');
 
 	Route::group(['middleware' => 'moderator'], function () {

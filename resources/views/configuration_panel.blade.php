@@ -52,15 +52,6 @@
 
 @section('content')
 	<div class="ui segment" id="ConfigurationPanel">
-		@if(session('success'))
-			<div class="ui success message">
-				<i class="close icon"></i>
-				<div class="header">
-					Success
-				</div>
-				<p>{{ session('success') }}</p>
-			</div>
-		@endif
 
 		@if (count($errors) > 0)
 			<div class="ui error message">
