@@ -19,12 +19,12 @@
 @section('content')
 	<div class="ui segment" id="ConfigurationPanel">
 		@if(session('success'))
-			<div class='ui success message'>
-				<div class='header'>
+			<div class="ui success message">
+				<i class="close icon"></i>
+				<div class="header">
 					Success
 				</div>
-				<i class='close icon'></i>
-				<span>{{ session('success') }}</span>
+				<p>{{ session('success') }}</p>
 			</div>
 		@endif
 

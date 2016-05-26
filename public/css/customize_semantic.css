@@ -28,8 +28,6 @@
 
 #ConfigurationPanel .ui.message {
 	display: inherit;
-	position: static;
-	width: 100%;
 }
 
 #LineUp, #News, #Contact, #ConfigurationPanel {
