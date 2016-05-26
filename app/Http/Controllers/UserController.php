@@ -14,6 +14,16 @@ use Illuminate\Support\Facades\Validator;
 class UserController extends Controller
 {
 	/**
+	 * Show the form for creating a new user.
+	 *
+	 * @return Response
+	 */
+	public function create()
+	{
+		return view('register');
+	}
+
+	/**
 	 * Store a newly created user in storage.
 	 *
 	 * @param UserRequest $request
@@ -27,7 +37,7 @@ class UserController extends Controller
 		$input['password'] = Hash::make($input['password']);
 		array_forget($input, 'password_confirmation');
 
-		if (Auth::user()->admin == true)
+		if (Auth::check() && Auth::user()->admin == true)
 		{
 			$input['admin'] = true;
 		}

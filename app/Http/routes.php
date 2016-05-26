@@ -18,6 +18,7 @@ Route::post('login','AuthController@login');
 // ---------- WEBSITE (all users) ----------
 Route::get('/', 'HomeController@index');
 Route::resource('user', 'UserController', ['only' => ['store']]);
+Route::get('register', 'UserController@create');
 Route::get('image/{type}/{filename}', 'ImageController@show');
 Route::post('mail/send', 'MailController@send');
 

@@ -44,7 +44,7 @@
 			.column {
 				max-width: 450px;
 			}
-			.ui.error.message {
+			.message {
 				width: 90%;
 				left: 5%;
 				top: 40px;
@@ -53,13 +53,17 @@
 		</style>
 	</head>
 	<body>
-		@if(session('error'))
-			<!-- Message system -->
-			<div class='ui error message'>
-				<div class='header'>
-					Error
+		@if (count($errors) > 0)
+			<div class="ui error message">
+				<i class="close icon"></i>
+				<div class="header">
+					Errors - Please fill out the form correctly
 				</div>
-				<span>{{ session('error') }}</span>
+				<ul class="list">
+					@foreach($errors->all() as $error)
+						<li>{{ $error }}</li>
+					@endforeach
+				</ul>
 			</div>
 		@endif
 
@@ -68,31 +72,36 @@
 				<h2 class="ui teal image header">
 					<i src="" class="pin icon"></i>
 					<div class="content">
-						Login for Festivalitis
+						Register into Festivalitis
 					</div>
 				</h2>
-				<form class="ui large form" action="{{ action('AuthController@login') }}" method="post">
+				<form class="ui large form" action="{{ action('UserController@store') }}" method="post">
 					<div class="ui segment">
-						<div class="field">
-							<div class="ui left icon input">
-								<i class="user icon"></i>
-								<input type="email" name="email" placeholder="E-mail address" required>
-							</div>
+						<div class="field required {{ $errors->has('fname') ? 'error' : '' }}">
+							<input id="fname" type="text" name="fname" value="{{ old('fname') }}" placeholder="First Name" required>
 						</div>
-						<div class="field">
-							<div class="ui left icon input">
-								<i class="lock icon"></i>
-								<input type="password" name="password" placeholder="Password" required>
-							</div>
+
+						<div class="field required {{ $errors->has('lname') ? 'error' : '' }}">
+							<input id="lname" type="text" name="lname" value="{{ old('lname') }}" placeholder="Last Name" required>
 						</div>
-						<button class="ui fluid large teal submit button">Login</button>
+
+						<div class="field required {{ $errors->has('email') ? 'error' : '' }}">
+							<input id="email" type="email" name="email" value="{{ old('email') }}" placeholder="Email" required>
+						</div>
+
+						<div class="field required {{ $errors->has('password') ? 'error' : '' }}">
+							<input id="password" type="password" name="password" placeholder="Password" required>
+						</div>
+
+						<div class="field required {{ $errors->has('password_confirmation') ? 'error' : '' }}">
+							<input id="password_confirmation" type="password" name="password_confirmation" placeholder="Confirm password" required>
+						</div>
+
+						<button class="ui fluid large teal submit button">Register</button>
 					</div>
 					{{ csrf_field() }}
 					<div class="ui error message"></div>
 				</form>
-				<div class="ui message">
-					New to us? <a href="{{ action('UserController@create') }}">Sign Up</a>
-				</div>
 			</div>
 		</div>
 	</body>
