@@ -11,7 +11,7 @@ class Ticket extends Model
 	 *
 	 * @var array
 	 */
-	protected $guarded = ['id', 'user_id'];
+	protected $guarded = ['id'];
 	
 	/**
 	 * Get the user that owns the ticket.

@@ -287,6 +287,36 @@
 		</div>
 	</div>
 
+	@if(Auth::check())
+		<!-- Tickets -->
+		<div class="ui segment" id="Tickets">
+			<h1 class="ui header teal">
+				<i class="ticket icon"></i>
+				<div class="content">
+					Convinced? Buy your tickets now!
+				</div>
+			</h1>
+
+			<div class="ui segment">
+				<form class="ui form" action="{{ action('TicketController@store') }}" method="post">
+					{{ csrf_field() }}
+					<div class="required field">
+						<label for="amount">Amount</label>
+						<select id="amount" name="amount" class="ui dropdown" required>
+							@for($i = 1; $i < 11; $i++)
+								<option value="{{ $i }}">{{ $i . ' - € ' . ($i * 20) }}</option>
+							@endfor
+						</select>
+					</div>
+					<button class="ui button right labeled icon teal fluid" type="submit">
+						<i class="icon send"></i>
+						Buy
+					</button>
+				</form>
+			</div>
+		</div>
+	@endif
+
 	<!-- Contact -->
 	<div class="ui segment" id="Contact">
 		<h1 class="ui header teal">

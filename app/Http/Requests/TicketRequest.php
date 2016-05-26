@@ -24,7 +24,7 @@ class TicketRequest extends Request
     public function rules()
     {
         return [
-            'amount'	=> 'integer|min:1',
+            'amount'	=> 'integer|min:1|max:10',
         ];
     }
 }

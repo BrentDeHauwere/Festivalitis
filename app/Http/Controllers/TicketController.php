@@ -27,5 +27,7 @@ class TicketController extends Controller
 		// Option 2:
 		// $ticket = new Article($request->all());
 		// $ticket->save();
+
+		return redirect()->action('HomeController@index')->with('success', 'Thank you for ordering tickets. Shortly, you will receive an email to go over to the transaction.');
 	}
 }

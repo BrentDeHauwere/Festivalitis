@@ -88,6 +88,11 @@
 			<a class="item" href="{{ action('HomeController@index') }}#News">
 				News
 			</a>
+			@if(Auth::check())
+				<a class="item" href="{{ action('HomeController@index') }}#Tickets">
+					Tickets
+				</a>
+			@endif
 			<a class="item" href="{{ action('HomeController@index') }}#Contact">
 				Contact
 			</a>
