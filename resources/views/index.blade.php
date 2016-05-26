@@ -246,28 +246,30 @@
 								<p>{{ $item->description }}</p>
 							</div>
 						</div>
-						<div class="extra content">
-							@foreach($item->comments as $comment)
-								<div class="ui comments">
-									<div class="comment">
-										<a class="avatar">
-											<img src="{{ action('ImageController@show', ['type' => 'user', 'filename' => $comment->user_id]) }}">
-										</a>
-										<div class="content">
-											<span class="author">{{ "{$comment->user->fname} {$comment->user->lname}" }}</span>
-											<div class="metadata">
-												<span class="date"><time class="timeago" datetime="{{ $comment->created_at }}">
-														July 17, 2008
-													</time></span>
-											</div>
-											<div class="text">
-												{{ $comment->description }}
+						@if(count($item->comments) > 0)
+							<div class="extra content">
+								@foreach($item->comments as $comment)
+									<div class="ui comments">
+										<div class="comment">
+											<a class="avatar">
+												<img src="{{ action('ImageController@show', ['type' => 'user', 'filename' => $comment->user_id]) }}">
+											</a>
+											<div class="content">
+												<span class="author">{{ "{$comment->user->fname} {$comment->user->lname}" }}</span>
+												<div class="metadata">
+													<span class="date"><time class="timeago" datetime="{{ $comment->created_at }}">
+															July 17, 2008
+														</time></span>
+												</div>
+												<div class="text">
+													{{ $comment->description }}
+												</div>
 											</div>
 										</div>
 									</div>
-								</div>
-							@endforeach
-						</div>
+								@endforeach
+							</div>
+						@endif
 						@if(Auth::check())
 							<form class="ui bottom attached action input formComment">
 								{{ csrf_field() }}
