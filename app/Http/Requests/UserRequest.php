@@ -27,7 +27,7 @@ class UserRequest extends Request
             'fname'    => 'required',
             'lname'    => 'required',
             'email'    => 'required|email',
-            'password' => 'required|confirmed|size:6',
+            'password' => 'required|confirmed|min:6',
         ];
     }
 }

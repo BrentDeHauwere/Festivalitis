@@ -28,6 +28,13 @@
 
 #ConfigurationPanel .ui.message {
 	display: inherit;
+	position: static;
+	width: 100%;
+}
+
+#ConfigurationPanel .ui.message .close.icon{
+	top: 4em;
+	right: 1.4em;
 }
 
 #LineUp, #News, #Contact, #ConfigurationPanel {

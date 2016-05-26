@@ -28,6 +28,20 @@
 			</div>
 		@endif
 
+		@if (count($errors) > 0)
+			<div class="ui error message">
+				<i class="close icon"></i>
+				<div class="header">
+					Errors - Please fill out the form correctly
+				</div>
+				<ul class="list">
+					@foreach($errors->all() as $error)
+						<li>{{ $error }}</li>
+					@endforeach
+				</ul>
+			</div>
+		@endif
+
 		<h1 class="ui header teal">
 			<i class="configure icon"></i>
 			<div class="content">
@@ -45,27 +59,27 @@
 		<div class="ui bottom attached tab segment active" data-tab="accounts">
 			<form class="ui form group" action="{{action('UserController@store')}}" method="post">
 
-				<div class="field required">
+				<div class="field required {{ $errors->has('fname') ? 'error' : '' }}">
 					<label for="fname">First Name</label>
 					<input id="fname" type="text" name="fname" value="{{ old('fname') }}" placeholder="First Name" required>
 				</div>
 
-				<div class="field required">
+				<div class="field required {{ $errors->has('lname') ? 'error' : '' }}">
 					<label for="lname">Last Name</label>
 					<input id="lname" type="text" name="lname" value="{{ old('lname') }}" placeholder="Last Name" required>
 				</div>
 
-				<div class="field required">
+				<div class="field required {{ $errors->has('email') ? 'error' : '' }}">
 					<label for="email">Email</label>
 					<input id="email" type="email" name="email" value="{{ old('email') }}" placeholder="Email" required>
 				</div>
 
-				<div class="field required">
+				<div class="field required {{ $errors->has('password') ? 'error' : '' }}">
 					<label for="password">Password</label>
 					<input id="password" type="password" name="password" placeholder="Password" required>
 				</div>
 
-				<div class="field required">
+				<div class="field required {{ $errors->has('password_confirmation') ? 'error' : '' }}">
 					<label for="password_confirmation">Confirm password</label>
 					<input id="password_confirmation" type="password" name="password_confirmation" placeholder="Confirm password" required>
 				</div>
