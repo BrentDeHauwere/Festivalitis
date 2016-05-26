@@ -17,8 +17,8 @@ class HomeController extends Controller
 	 */
     public function index()
 	{
-		$artists = Artist::all();
-		$news = News::with('comments.user')->get();
+		$artists = Artist::orderBy('begin')->get();
+		$news = News::with('comments.user')->orderBy('created_at', 'desc')->get();
 
 		return view('index')
 			->withArtists($artists)
