@@ -36,5 +36,7 @@ class UserController extends Controller
 		}
 		
 		$user = User::create($input);
+
+		return redirect()->action('HomeController@configurationPanel')->with('success', 'Account was successfully created.');
 	}
 }
