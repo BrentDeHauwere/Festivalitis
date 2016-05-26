@@ -42,7 +42,10 @@
 					{
 						$(this)
 							.closest('.message')
-							.transition('fade')
+							.transition('fade', function ()
+							{
+								$(this).remove();
+							})
 						;
 					});
 			});
