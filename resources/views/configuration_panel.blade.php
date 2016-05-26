@@ -120,7 +120,7 @@
 
 				<input type="hidden" name="_token" value="{{ csrf_token() }}">
 
-				<button class="ui button primary right floated" type="submit">Create User</button>
+				<button class="ui button primary right floated" type="submit">Create Account</button>
 			</form>
 		</div>
 
@@ -163,19 +163,19 @@
 		<div class="ui bottom attached tab segment" data-tab="news">
 			<form class="ui form group" action="{{action('NewsController@store')}}" method="post">
 
-				<div class="field required">
+				<div class="field required {{ $errors->has('title') ? 'error' : '' }}">
 					<label for="title">Title</label>
 					<input id="title" type="text" name="title" value="{{ old('title') }}" placeholder="Title" required>
 				</div>
 
-				<div class="field required">
+				<div class="field required {{ $errors->has('description') ? 'error' : '' }}">
 					<label for="description">Description</label>
 					<textarea id="description" name="description" placeholder="Description" required>{{ old('description') }}</textarea>
 				</div>
 
 				<input type="hidden" name="_token" value="{{ csrf_token() }}">
 
-				<button class="ui button primary right floated" type="submit">Create Artist</button>
+				<button class="ui button primary right floated" type="submit">Create News Item</button>
 			</form>
 		</div>
 	</div>

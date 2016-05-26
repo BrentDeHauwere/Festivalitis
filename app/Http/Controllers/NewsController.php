@@ -19,6 +19,8 @@ class NewsController extends Controller
 	public function store(NewsRequest $request)
 	{
 		$news = News::create($request->all());
+
+		return redirect()->action('HomeController@configurationPanel')->with('success', 'News item was successfully created.');
 	}
 
 	/**
