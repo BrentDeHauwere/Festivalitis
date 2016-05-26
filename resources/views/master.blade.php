@@ -97,10 +97,12 @@
 						{{ Auth::user()->fname . ' ' . Auth::user()->lname }}
 						<img class="ui avatar image" src="{{ action('ImageController@show', ['type' => 'user', 'filename' => Auth::id()]) }}">
 						<div class="menu">
-							<a class="ui item" href="{{ action('HomeController@configurationPanel') }}">
-								<i class="configure icon"></i>
-								Configuration Panel
-							</a>
+							@if(Auth::user()->admin)
+								<a class="ui item" href="{{ action('HomeController@configurationPanel') }}">
+									<i class="configure icon"></i>
+									Configuration Panel
+								</a>
+							@endif
 							<form id="setUserImage" method="post" action="{{ action('UserController@image') }}" enctype="multipart/form-data">{{ csrf_field() }}</form>
 							<a class="item">
 								<label for="imageUser" class="ui icon" style="cursor: pointer"><i class="file image outline icon"></i>Set
