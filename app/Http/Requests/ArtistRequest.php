@@ -28,6 +28,7 @@ class ArtistRequest extends Request
             'description'	=> 'required',
             'begin'			=> 'required|date_format:H:i',
             'end'			=> 'required|date_format:H:i|after:begin',
+            'image'			=> 'required|image',
         ];
     }
 }

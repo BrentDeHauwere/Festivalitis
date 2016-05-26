@@ -126,29 +126,29 @@
 
 		<!-- Add Artist -->
 		<div class="ui bottom attached tab segment" data-tab="artists">
-			<form class="ui form group" action="{{action('ArtistController@store')}}" method="post">
+			<form class="ui form group" action="{{action('ArtistController@store')}}" method="post" enctype="multipart/form-data">
 
-				<div class="field required">
+				<div class="field required {{ $errors->has('name') ? 'error' : '' }}">
 					<label for="name">Name</label>
 					<input id="name" type="text" name="name" value="{{ old('name') }}" placeholder="Name" required>
 				</div>
 
-				<div class="field required">
+				<div class="field required {{ $errors->has('description') ? 'error' : '' }}">
 					<label for="description">Description</label>
 					<textarea id="description" name="description" placeholder="Description" required>{{ old('description') }}</textarea>
 				</div>
 
-				<div class="field required">
+				<div class="field required {{ $errors->has('begin') ? 'error' : '' }}">
 					<label for="begin">Begin</label>
 					<input id="begin" type="time" name="begin" value="{{ old('begin') }}" placeholder="Begin" required>
 				</div>
 
-				<div class="field required">
+				<div class="field required {{ $errors->has('end') ? 'error' : '' }}">
 					<label for="end">End</label>
 					<input id="end" type="time" name="end" value="{{ old('End') }}" placeholder="End" required>
 				</div>
 
-				<div class="field required">
+				<div class="field required {{ $errors->has('image') ? 'error' : '' }}">
 					<label for="image">Image</label>
 					<input id="image" type="file" name="image" value="{{ old('image') }}" required>
 				</div>
