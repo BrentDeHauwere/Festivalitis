@@ -115,7 +115,11 @@
 						// Add comment in view
 						console.log(data);
 						console.log(data.user.email);
-						form.prev().append('<div class="ui comments"><div class="comment"><a class="avatar"><img src="image/user/' + data.user_id + '"></a> <div class="content"><span class="author">' + data.user.fname + ' ' + data.user.lname + '</span><div class="metadata"><span class="date"><time class="timeago" datetime="' + data.created_at + '">July 17, 2008</time></span></div><div class="text">' + data.description +'</div></div></div></div>');
+
+						var a = document.createElement('div');
+						a.textContent = data.description;
+
+						form.prev().append('<div class="ui comments"><div class="comment"><a class="avatar"><img src="image/user/' + data.user_id + '"></a> <div class="content"><span class="author">' + data.user.fname + ' ' + data.user.lname + '</span><div class="metadata"><span class="date"><time class="timeago" datetime="' + data.created_at + '">July 17, 2008</time></span></div><div class="text">' + a.innerHTML +'</div></div></div></div>');
 						form.prev().find('time.timeago').timeago();
 
 						// Message: success
