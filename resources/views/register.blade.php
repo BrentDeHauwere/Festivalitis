@@ -8,28 +8,12 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
 		<!-- Site Properties -->
-		<title>The Great Wall - Login</title>
-		<link rel="stylesheet" type="text/css" href="/semantic/dist/components/reset.css">
-		<link rel="stylesheet" type="text/css" href="/semantic/dist/components/site.css">
-
-		<link rel="stylesheet" type="text/css" href="/semantic/dist/components/container.css">
-		<link rel="stylesheet" type="text/css" href="/semantic/dist/components/grid.css">
-		<link rel="stylesheet" type="text/css" href="/semantic/dist/components/header.css">
-		<link rel="stylesheet" type="text/css" href="/semantic/dist/components/image.css">
-		<link rel="stylesheet" type="text/css" href="/semantic/dist/components/menu.css">
-
-		<link rel="stylesheet" type="text/css" href="/semantic/dist/components/divider.css">
-		<link rel="stylesheet" type="text/css" href="/semantic/dist/components/segment.css">
-		<link rel="stylesheet" type="text/css" href="/semantic/dist/components/form.css">
-		<link rel="stylesheet" type="text/css" href="/semantic/dist/components/input.css">
-		<link rel="stylesheet" type="text/css" href="/semantic/dist/components/button.css">
-		<link rel="stylesheet" type="text/css" href="/semantic/dist/components/list.css">
-		<link rel="stylesheet" type="text/css" href="/semantic/dist/components/message.css">
-		<link rel="stylesheet" type="text/css" href="/semantic/dist/components/icon.css">
+		<title>The Great Wall - Register</title>
+		<link rel="stylesheet" type="text/css" href="{{ asset('/semantic/dist/semantic.min.css') }}">
 
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
-		<script src="/semantic/dist/components/form.js"></script>
-		<script src="/semantic/dist/components/transition.js"></script>
+		<script src="{{ asset('/semantic/dist/components/form.js') }}"></script>
+		<script src="{{ asset('/semantic/dist/components/transition.js') }}"></script>
 
 		<style type="text/css">
 			body {

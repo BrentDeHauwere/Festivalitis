@@ -10,7 +10,7 @@
 	</script>
 
 	<!-- Timeago: a jQuery plugin that makes it easy to support automatically updating fuzzy timestamps (e.g. "4 minutes ago" or "about 1 day ago"). -->
-	<script src="/js/jquery.timeago.js" type="text/javascript"></script>
+	<script src="{{ asset('/js/jquery.timeago.js') }}" type="text/javascript"></script>
 	<script>
 		jQuery(document).ready(function ()
 		{

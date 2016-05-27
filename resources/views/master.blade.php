@@ -4,14 +4,14 @@
 		<title>Festivalitis</title>
 
 		<!-- Semantic UI - CSS -->
-		<link rel="stylesheet" type="text/css" href="/semantic/dist/semantic.min.css">
-		<link rel="stylesheet" type="text/css" href="/css/customize_semantic.css">
+		<link rel="stylesheet" type="text/css" href="{{ asset('/semantic/dist/semantic.min.css') }}">
+		<link rel="stylesheet" type="text/css" href="{{ asset('/css/customize_semantic.css') }}">
 
 		<!-- jQuery -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
 
 		<!-- Semantic UI - JS -->
-		<script src="/semantic/dist/semantic.min.js"></script>
+		<script src="{{ asset('/semantic/dist/semantic.min.js') }}"></script>
 		<script>
 			$(document).ready(function ()
 			{
